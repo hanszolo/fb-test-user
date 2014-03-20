@@ -1,231 +1,231 @@
 <html>
 <head>
-	<meta name="author" content="hzhou">
-	<title>Facebook Test User creator of SCIENCE</title>
-	<style>
-		.content {
-			font-family: Arial;
-		}
-		.form {
-			display: inline-block;
-			vertical-align: top;
-		}
-		.strong {
-			font-weight: bold;
-		}
-		.label {
-			display: block;
-		}
-		.result {
-			display: inline-block;
-			vertical-align: top;
-		}
-		.hidden {
-			display: none !important;
-		}
-		.message {
-			display: block;
-			margin-bottom: 10px;
-		}
-		.error {
-			display: block;
-			width: 375px;
-			vertical-align: top;
-			background-color: red;
-			color: white;
-			padding: 0px 10px 5px 10px;
-			margin-bottom: 10px;
-		}
-		.facebook {
-			background-color: #4c6395;
-			color: white;
-			font-size: 100%;
-			padding: 5px 5px 5px 20px;
-		}
-		.submit {
-			background-color: lawngreen;
-			color: black;
-			width: 100%;
-		}
-		.submit:active {
-			background-color: red;
-			color: white;
-		}
-		input {
-			width: 200;
-		}
-	</style>
-	<script type="text/javascript">
+    <meta name="author" content="hzhou">
+    <title>Facebook Test User creator of SCIENCE</title>
+    <style>
+        .content {
+            font-family: Arial;
+        }
+        .form {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .strong {
+            font-weight: bold;
+        }
+        .label {
+            display: block;
+        }
+        .result {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .message {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .error {
+            display: block;
+            width: 375px;
+            vertical-align: top;
+            background-color: red;
+            color: white;
+            padding: 0px 10px 5px 10px;
+            margin-bottom: 10px;
+        }
+        .facebook {
+            background-color: #4c6395;
+            color: white;
+            font-size: 100%;
+            padding: 5px 5px 5px 19px;
+        }
+        .submit {
+            background-color: lawngreen;
+            color: black;
+            width: 100%;
+        }
+        .submit:active {
+            background-color: red;
+            color: white;
+        }
+        input {
+            width: 200;
+        }
+    </style>
+    <script type="text/javascript">
 
-		window.onload = function() {
-			var appId = document.getElementById('appId');
-			var appSecret = document.getElementById('appSecret');
-			var fullName = document.getElementById('fullName');
+        window.onload = function() {
+            var appId = document.getElementById('appId');
+            var appSecret = document.getElementById('appSecret');
+            var fullName = document.getElementById('fullName');
 
-			var show = function( elem ) {
-				elem.className = elem.className.replace(/\bhidden\b/,'').trim();
-			}
+            var show = function( elem ) {
+                elem.className = elem.className.replace(/\bhidden\b/,'').trim();
+            }
 
-			var hide = function( elem ) {
-				elem.className = 'hidden '+elem.className.replace(/\bhidden\b/,'').trim();
-			}
+            var hide = function( elem ) {
+                elem.className = 'hidden '+elem.className.replace(/\bhidden\b/,'').trim();
+            }
 
-			if (window.location.search) {
-				var args = window.location.search.substring(1).split('&');
-				for (i in args) {
-					if (args[i].substring(0,'appId='.length) === 'appId=') {
-						appId.value = args[i].substring('appId='.length);
-					}
-					else if (args[i].substring(0,'appSecret='.length) === 'appSecret=') {
-						appSecret.value = args[i].substring('appSecret='.length);
-					}
-				}
-			}
-			if ( sessionStorage.getItem('fb-test-user-uid') && 
-				 sessionStorage.getItem('fb-test-user-email') && 
-				 sessionStorage.getItem('fb-test-user-password')
-			 ) {
-				document.getElementById('uid').innerHTML = sessionStorage.getItem('fb-test-user-uid');
-				document.getElementById('uid').setAttribute('value', sessionStorage.getItem('fb-test-user-uid'));
-				document.getElementById('email').innerHTML = sessionStorage.getItem('fb-test-user-email');
-				document.getElementById('fbEmail').value = sessionStorage.getItem('fb-test-user-email');
-				document.getElementById('password').innerHTML = sessionStorage.getItem('fb-test-user-password');
-				document.getElementById('fbPass').value = sessionStorage.getItem('fb-test-user-password');
-				show(document.getElementById('testUser'));
-			}
+            if (window.location.search) {
+                var args = window.location.search.substring(1).split('&');
+                for (i in args) {
+                    if (args[i].substring(0,'appId='.length) === 'appId=') {
+                        appId.value = args[i].substring('appId='.length);
+                    }
+                    else if (args[i].substring(0,'appSecret='.length) === 'appSecret=') {
+                        appSecret.value = args[i].substring('appSecret='.length);
+                    }
+                }
+            }
+            if ( sessionStorage.getItem('fb-test-user-uid') && 
+                 sessionStorage.getItem('fb-test-user-email') && 
+                 sessionStorage.getItem('fb-test-user-password')
+             ) {
+                document.getElementById('uid').innerHTML = sessionStorage.getItem('fb-test-user-uid');
+                document.getElementById('uid').setAttribute('value', sessionStorage.getItem('fb-test-user-uid'));
+                document.getElementById('email').innerHTML = sessionStorage.getItem('fb-test-user-email');
+                document.getElementById('fbEmail').value = sessionStorage.getItem('fb-test-user-email');
+                document.getElementById('password').innerHTML = sessionStorage.getItem('fb-test-user-password');
+                document.getElementById('fbPass').value = sessionStorage.getItem('fb-test-user-password');
+                show(document.getElementById('testUser'));
+            }
 
-			var error = function( message ) {
-				document.getElementById('errorText').innerHTML = message;
-				show(document.getElementById('fbError'));
-				hide(document.getElementById('message'));
-			}
+            var error = function( message ) {
+                document.getElementById('errorText').innerHTML = message;
+                show(document.getElementById('fbError'));
+                hide(document.getElementById('message'));
+            }
 
-			var message = function( message ) {
-				document.getElementById('messageText').innerHTML = message;
-				show(document.getElementById('message'));
-				hide(document.getElementById('fbError'));
-			}
+            var message = function( message ) {
+                document.getElementById('messageText').innerHTML = message;
+                show(document.getElementById('message'));
+                hide(document.getElementById('fbError'));
+            }
 
-			var rollName = document.getElementById('reRoll').onclick = function () {
-				var first = [ "Test", "Testy", "Tester", "Testa", "Testopher", "Testina" ];
-				var prefix = [ "Mc", "Mac", "von ", "De", "Fitz", "La", "Le", "van der " ];
-				var suffix = [ "erson", "ington", "son", "erbatch", "enstein", "erberg", "sen", "erman", "erby"
-							   "svensen", "erway", "chester", "erland", "erlain", "ceister", "meunster" ];
-				var suffix2 = [ "shire", "further", "owitz", "ovich", "ovelt", "wich" ];
-				document.getElementById('fullName').value = 
-					first[ Math.floor( Math.random() * first.length ) ] + " " +
-					(Math.random() < .3 ? prefix[ Math.floor( Math.random() * prefix.length) ] : "") +
-					"Test" +
-					(Math.random() < .9 ? suffix[ Math.floor( Math.random() * suffix.length) ] : "") +
-					(Math.random() < .5 ? suffix2[ Math.floor( Math.random() * suffix2.length) ] : "");
-			};
-			rollName();
+            var rollName = document.getElementById('reRoll').onclick = function () {
+                var first = [ "Test", "Testy", "Tester", "Testa", "Testopher", "Testina", "Testathan" ];
+                var prefix = [ "Mc", "Mac", "von ", "De", "La", "Le", "van der " ];
+                var suffix = [ "erson", "ington", "son", "erbatch", "enstein", "erberg", "sen", "erman", "erfield",
+                               "svensen", "erway", "chester", "erland", "erlain", "ceister", "meunster" ];
+                var suffix2 = [ "shire", "further", "owitz", "ovich", "ovelt", "wich", "by" ];
+                document.getElementById('fullName').value = 
+                    first[ Math.floor( Math.random() * first.length ) ] + " " +
+                    (Math.random() < .3 ? prefix[ Math.floor( Math.random() * prefix.length) ] : "") +
+                    "Test" +
+                    (Math.random() < .9 ? suffix[ Math.floor( Math.random() * suffix.length) ] : "") +
+                    (Math.random() < .5 ? suffix2[ Math.floor( Math.random() * suffix2.length) ] : "");
+            };
+            rollName();
 
-			var makeTestUser = document.getElementById('doIt').onclick = function() {
-				var xhr = new XMLHttpRequest();
-				xhr.onreadystatechange = function() {
-					if (this.readyState === 4) {
-						hide(document.getElementById('message'));
-						var testUser = document.getElementById('testUser');
-						var resp = JSON.parse(xhr.responseText);
-						if (resp && resp.id && resp.email && resp.password) {
-							document.getElementById('uid').innerHTML = resp.id;
-							document.getElementById('uid').setAttribute('value', resp.id);
-							document.getElementById('email').innerHTML = resp.email;
-							document.getElementById('fbEmail').value = resp.email;
-							document.getElementById('password').innerHTML = resp.password;
-							document.getElementById('fbPass').value = resp.password;
-							sessionStorage.setItem('fb-test-user-uid', resp.id);
-							sessionStorage.setItem('fb-test-user-email', resp.email);
-							sessionStorage.setItem('fb-test-user-password', resp.password);
-							show(document.getElementById('testUser'));
-						} else if (resp.error) {
-							error(resp.error.message);
-						} else {
-							error("Don't know what went wrong, bro.");
-						}
-					}
-				};
-				var appId = document.getElementById('appId').value,
-					appSecret = document.getElementById('appSecret').value,
-					fullName = document.getElementById('fullName').value,
-					fbUrl = "https://graph.facebook.com/" + appId + "/accounts/test-users?access_token=" + appId + "|" + appSecret;
-				xhr.open("POST", fbUrl);
-				xhr.send("name="+fullName);
-				message( "Facebook stuff happening...");
-			};
+            var makeTestUser = document.getElementById('doIt').onclick = function() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState === 4) {
+                        hide(document.getElementById('message'));
+                        var testUser = document.getElementById('testUser');
+                        var resp = JSON.parse(xhr.responseText);
+                        if (resp && resp.id && resp.email && resp.password) {
+                            document.getElementById('uid').innerHTML = resp.id;
+                            document.getElementById('uid').setAttribute('value', resp.id);
+                            document.getElementById('email').innerHTML = resp.email;
+                            document.getElementById('fbEmail').value = resp.email;
+                            document.getElementById('password').innerHTML = resp.password;
+                            document.getElementById('fbPass').value = resp.password;
+                            sessionStorage.setItem('fb-test-user-uid', resp.id);
+                            sessionStorage.setItem('fb-test-user-email', resp.email);
+                            sessionStorage.setItem('fb-test-user-password', resp.password);
+                            show(document.getElementById('testUser'));
+                        } else if (resp.error) {
+                            error(resp.error.message);
+                        } else {
+                            error("Don't know what went wrong, bro.");
+                        }
+                    }
+                };
+                var appId = document.getElementById('appId').value,
+                    appSecret = document.getElementById('appSecret').value,
+                    fullName = document.getElementById('fullName').value,
+                    fbUrl = "https://graph.facebook.com/" + appId + "/accounts/test-users?access_token=" + appId + "|" + appSecret;
+                xhr.open("POST", fbUrl);
+                xhr.send("name="+fullName);
+                message( "Facebook stuff happening...");
+            };
 
-			var deleteTestUser = document.getElementById('delete').onclick = function() {
-				var xhr = new XMLHttpRequest();
-				xhr.onreadystatechange = function() {
-					if (this.readyState === 4) {
-						hide(document.getElementById('message'));
-						if (xhr.responseText === "true") {
-							document.getElementById('uid').innerHTML = '';
-							document.getElementById('uid').removeAttribute('value');
-							document.getElementById('email').innerHTML = '';
-							document.getElementById('fbEmail').removeAttribute('value');
-							document.getElementById('password').innerHTML = '';
-							document.getElementById('fbPass').removeAttribute('value');
-							sessionStorage.removeItem('fb-test-user-uid');
-							sessionStorage.removeItem('fb-test-user-email');
-							sessionStorage.removeItem('fb-test-user-password');
-							hide(document.getElementById('testUser'));
-							message('Killed that test user.');
-							rollName();
-						}
-						else {
-							var resp = JSON.parse(xhr.responseText);
-							error(resp.error.message);
-						}
-					}
-				}
-				var appId = document.getElementById('appId').value,
-					appSecret = document.getElementById('appSecret').value,
-					uid = document.getElementById('uid').getAttribute('value'),
-					fbUrl = "https://graph.facebook.com/" + uid + "?access_token=" + appId + "|" + appSecret;
-				xhr.open("DELETE", fbUrl);
-				xhr.send("uid="+uid);
-				message( "Facebook stuff happening..." );
-			};
+            var deleteTestUser = document.getElementById('delete').onclick = function() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState === 4) {
+                        hide(document.getElementById('message'));
+                        if (xhr.responseText === "true") {
+                            document.getElementById('uid').innerHTML = '';
+                            document.getElementById('uid').removeAttribute('value');
+                            document.getElementById('email').innerHTML = '';
+                            document.getElementById('fbEmail').removeAttribute('value');
+                            document.getElementById('password').innerHTML = '';
+                            document.getElementById('fbPass').removeAttribute('value');
+                            sessionStorage.removeItem('fb-test-user-uid');
+                            sessionStorage.removeItem('fb-test-user-email');
+                            sessionStorage.removeItem('fb-test-user-password');
+                            hide(document.getElementById('testUser'));
+                            message('Killed that test user.');
+                            rollName();
+                        }
+                        else {
+                            var resp = JSON.parse(xhr.responseText);
+                            error(resp.error.message);
+                        }
+                    }
+                }
+                var appId = document.getElementById('appId').value,
+                    appSecret = document.getElementById('appSecret').value,
+                    uid = document.getElementById('uid').getAttribute('value'),
+                    fbUrl = "https://graph.facebook.com/" + uid + "?access_token=" + appId + "|" + appSecret;
+                xhr.open("DELETE", fbUrl);
+                xhr.send("uid="+uid);
+                message( "Facebook stuff happening..." );
+            };
 
-			var loginFB = document.getElementById('login').onclick = function() {
-				document.getElementById('fbLoginForm').submit();
-			}
-		};
-	</script>
+            var loginFB = document.getElementById('login').onclick = function() {
+                document.getElementById('fbLoginForm').submit();
+            }
+        };
+    </script>
 </head>
 <body>
 <div class="content">
-	<h2>So, you wanna create a facebook test user, huh?</h2>
-	<div class="hidden error" id="fbError">
-		<h2>Something broke facebook:</h2>
-		<div class="label" id="errorText"></div>
-	</div>
-	<div class="hidden message" id="message">
-		<div class="label" id="messageText"></div>
-	</div>
-	<div class="form">
-		<div class="label">Put yo app id here</div>
-		<input type="text" id="appId" name="appId" tabindex=1 />
-		<div class="label">App secret right here</div>
-		<input type="text" id="appSecret" name="appSecret" tabindex=2 />
-		<div class="label">Name your user</div>
-		<input type="text" id="fullName" name="fullName" tabindex=3 /> <button id="reRoll">&#10227;</button>
-		<p />
-		<div><button class="submit" id="doIt" tabindex=3><h1> DO IT. </h1></button></div>
-	</div>
-	<div class="hidden result" id="testUser">
-		<div class="strong label">Test user id:</div><div class="label" id="uid"></div>
-		<div class="strong label">Test user email:</div><div class="label" id="email"></div>
-		<div class="strong label">Test user password:</div><div class="label" id="password"></div>
-		<button class="facebook" id="login"><strong>f</strong>&nbsp; | Log in with this user.</button>
-		<form id="fbLoginForm" action="https://www.facebook.com/login.php?login_attempt=1" target="_blank">
-			<input type="hidden" id="fbEmail" name="email"/>
-			<input type="hidden" id="fbPass" name="pass"/>
-		</form>
-		<div><button class="submit" id="delete"><h1> DELETE </h1></button></div>
-	</div>
+    <h2>So, you wanna create a facebook test user, huh?</h2>
+    <div class="hidden error" id="fbError">
+        <h2>Something broke facebook:</h2>
+        <div class="label" id="errorText"></div>
+    </div>
+    <div class="hidden message" id="message">
+        <div class="label" id="messageText"></div>
+    </div>
+    <div class="form">
+        <div class="label">Put yo app id here</div>
+        <input type="text" id="appId" name="appId" tabindex=1 />
+        <div class="label">App secret right here</div>
+        <input type="text" id="appSecret" name="appSecret" tabindex=2 />
+        <div class="label">Name your user</div>
+        <input type="text" id="fullName" name="fullName" tabindex=3 /> <button id="reRoll">&#10227;</button>
+        <p />
+        <div><button class="submit" id="doIt" tabindex=3><h1> DO IT. </h1></button></div>
+    </div>
+    <div class="hidden result" id="testUser">
+        <div class="strong label">Test user id:</div><div class="label" id="uid"></div>
+        <div class="strong label">Test user email:</div><div class="label" id="email"></div>
+        <div class="strong label">Test user password:</div><div class="label" id="password"></div>
+        <button class="facebook" id="login"><strong>f</strong>&nbsp; | Log in with this user.</button>
+        <form id="fbLoginForm" action="https://www.facebook.com/login.php?login_attempt=1" target="_blank">
+            <input type="hidden" id="fbEmail" name="email"/>
+            <input type="hidden" id="fbPass" name="pass"/>
+        </form>
+        <div><button class="submit" id="delete"><h1> UNDO IT. </h1></button></div>
+    </div>
 </div>
 </body>
 </html>

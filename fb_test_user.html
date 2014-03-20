@@ -108,15 +108,16 @@
 
 			var rollName = document.getElementById('reRoll').onclick = function () {
 				var first = [ "Test", "Testy", "Tester", "Testa", "Testopher", "Testina" ];
-				var prefix = [ "Mc", "Mac", "von ", "De", "Fitz", "La" ];
-				var suffix = [ "erson", "ington", "son", "erbatch", "enstein", "erberg", "sen", "erman", "svensen" ];
-				var suffix2 = [ "shire", "further", "owitz", "ovich", "ovelt" ];
+				var prefix = [ "Mc", "Mac", "von ", "De", "Fitz", "La", "Le", "van der " ];
+				var suffix = [ "erson", "ington", "son", "erbatch", "enstein", "erberg", "sen", "erman", "erby"
+							   "svensen", "erway", "chester", "erland", "erlain", "ceister", "meunster" ];
+				var suffix2 = [ "shire", "further", "owitz", "ovich", "ovelt", "wich" ];
 				document.getElementById('fullName').value = 
 					first[ Math.floor( Math.random() * first.length ) ] + " " +
 					(Math.random() < .3 ? prefix[ Math.floor( Math.random() * prefix.length) ] : "") +
 					"Test" +
 					(Math.random() < .9 ? suffix[ Math.floor( Math.random() * suffix.length) ] : "") +
-					(Math.random() < .3 ? suffix2[ Math.floor( Math.random() * suffix2.length) ] : "");
+					(Math.random() < .5 ? suffix2[ Math.floor( Math.random() * suffix2.length) ] : "");
 			};
 			rollName();
 
@@ -141,7 +142,7 @@
 						} else if (resp.error) {
 							error(resp.error.message);
 						} else {
-							error("don't know what went wrong, bro.");
+							error("Don't know what went wrong, bro.");
 						}
 					}
 				};
@@ -198,7 +199,7 @@
 <div class="content">
 	<h2>So, you wanna create a facebook test user, huh?</h2>
 	<div class="hidden error" id="fbError">
-		<h2>Something broke the facebooks:</h2>
+		<h2>Something broke facebook:</h2>
 		<div class="label" id="errorText"></div>
 	</div>
 	<div class="hidden message" id="message">
@@ -207,23 +208,23 @@
 	<div class="form">
 		<div class="label">Put yo app id here</div>
 		<input type="text" id="appId" name="appId" tabindex=1 />
-		<div class="label">App secret right here, bro</div>
+		<div class="label">App secret right here</div>
 		<input type="text" id="appSecret" name="appSecret" tabindex=2 />
-		<div class="label">Name yo user</div>
+		<div class="label">Name your user</div>
 		<input type="text" id="fullName" name="fullName" tabindex=3 /> <button id="reRoll">&#10227;</button>
 		<p />
 		<div><button class="submit" id="doIt" tabindex=3><h1> DO IT. </h1></button></div>
 	</div>
 	<div class="hidden result" id="testUser">
-		<div class="strong label">Yo test user's id:</div><div class="label" id="uid"></div>
+		<div class="strong label">Test user id:</div><div class="label" id="uid"></div>
 		<div class="strong label">Test user email:</div><div class="label" id="email"></div>
-		<div class="strong label">Here's yo password:</div><div class="label" id="password"></div>
-		<button class="facebook" id="login"><strong>f</strong>&nbsp; | Log in wit da facebooks.</button>
+		<div class="strong label">Test user password:</div><div class="label" id="password"></div>
+		<button class="facebook" id="login"><strong>f</strong>&nbsp; | Log in with this user.</button>
 		<form id="fbLoginForm" action="https://www.facebook.com/login.php?login_attempt=1" target="_blank">
 			<input type="hidden" id="fbEmail" name="email"/>
 			<input type="hidden" id="fbPass" name="pass"/>
 		</form>
-		<div><button class="submit" id="delete"><h1> DELETE IT. </h1></button></div>
+		<div><button class="submit" id="delete"><h1> DELETE </h1></button></div>
 	</div>
 </div>
 </body>

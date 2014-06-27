@@ -3,22 +3,28 @@
     <meta name="author" content="hzhou">
     <title>Facebook Test User creator of SCIENCE</title>
     <style>
-        .content {
-            font-family: Arial;
+        body {
+            background: #f1f1f1;
         }
-        .form {
-            display: inline-block;
-            vertical-align: top;
+        .content {
+            font-family: 'Helvetica Neue';
+            margin: 0 auto;
+            max-width: 1024px;
+            text-align: center;
+        }
+        .form, .result {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 6px;
+            background: white;
         }
         .strong {
             font-weight: bold;
         }
         .label {
             display: block;
-        }
-        .result {
-            display: inline-block;
-            vertical-align: top;
         }
         .hidden {
             display: none !important;
@@ -29,12 +35,14 @@
         }
         .error {
             display: block;
-            width: 375px;
+            width: 400px;
             vertical-align: top;
             background-color: red;
             color: white;
-            padding: 0px 10px 5px 10px;
-            margin-bottom: 10px;
+            padding: 10px 20px;
+            margin: 0 auto 10px;
+            border: 1px solid black;
+            border-radius: 6px;
         }
         .facebook {
             background-color: #4c6395;
@@ -45,14 +53,16 @@
         .submit {
             background-color: lawngreen;
             color: black;
-            width: 100%;
         }
         .submit:active {
             background-color: red;
             color: white;
         }
         input {
-            width: 200;
+            width: 200px;
+        }
+        input#fullName {
+            width: 166px;
         }
     </style>
     <script type="text/javascript">

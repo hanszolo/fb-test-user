@@ -1,13 +1,13 @@
-Copyright 2014 Hans Zhou
+Copyright 2014 Hans Zhou <https://github.com/hanszolo>
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION:
 
-    http://www.apache.org/licenses/LICENSE-2.0
+SOFTWARE IS PROVDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES AND LIABILITIES TO
+THIS SOFTWARE INCLUDING BUT NOT LIMITED TO SOFTWARE NOT WORKING AS DESCRIBED, DEGRADATION
+OF SERVICE, ANY AND ALL FOUL LANGUAGE IN SOURCE CODE OR COMMIT MESSAGES, PEOPLE USING THIS
+SOFTWARE TO HELP THE LEGIONS OF EVIL, FACEBOOK NO LONGER EXISTING, ABDOMINAL DISCOMFORT, 
+CHRONIC FATIGUE, OR GENERAL LACK OF EFFORT PUT INTO THE PROJECT. SOFTWARE CANNOT BE ADMITTED
+AS EVIDENCE IN VOIGHT-KAMPFF TESTS.
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+Hans Zhou wrote this, which he thinks is pretty cool. As long as you retain this notice, 
+ unmodified, you can do whatever you want with this stuff.

@@ -33,6 +33,14 @@
             display: block;
             margin-bottom: 10px;
         }
+        .tooltip {
+            background: lightyellow;
+            color: black;
+            border-radius: 5px;
+            padding: 10px;
+            font-size:80%;
+            border: 1px solid darkgrey;
+        }
         .error {
             display: block;
             width: 400px;
@@ -80,6 +88,15 @@
                 elem.className = 'hidden '+elem.className.replace(/\bhidden\b/,'').trim();
             }
 
+            var showThenHide = function( elem, timeout ) {
+                setTimeout(function() {
+                    show(elem);
+                    setTimeout(function(){
+                        hide(elem);
+                    }, timeout);
+                }, 500);
+            }
+
             if (window.location.search) {
                 var args = window.location.search.substring(1).split('&');
                 for (i in args) {
@@ -102,6 +119,7 @@
                 document.getElementById('password').innerHTML = sessionStorage.getItem('fb-test-user-password');
                 document.getElementById('fbPass').value = sessionStorage.getItem('fb-test-user-password');
                 show(document.getElementById('testUser'));
+                showThenHide(document.getElementById('wowsuchtooltip'),15000);
             }
 
             var error = function( message ) {
@@ -149,6 +167,7 @@
                             sessionStorage.setItem('fb-test-user-email', resp.email);
                             sessionStorage.setItem('fb-test-user-password', resp.password);
                             show(document.getElementById('testUser'));
+                            showThenHide(document.getElementById('wowsuchtooltip'),15000);
                         } else if (resp.error) {
                             error(resp.error.message);
                         } else {
@@ -226,6 +245,9 @@
         <div><button class="submit" id="doIt" tabindex=3><h1> DO IT. </h1></button></div>
     </div>
     <div class="hidden result" id="testUser">
+        <div class="hidden tooltip strong message" id="wowsuchtooltip">
+            &#9888; You should probably delete this test user after you're done with it by pressing the Undo It button.
+        </div>
         <div class="strong label">Test user id:</div><div class="label" id="uid"></div>
         <div class="strong label">Test user email:</div><div class="label" id="email"></div>
         <div class="strong label">Test user password:</div><div class="label" id="password"></div>

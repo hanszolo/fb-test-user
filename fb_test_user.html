@@ -40,7 +40,7 @@
             color: black;
             border-radius: 5px;
             padding: 10px;
-            font-size:80%;
+            font-size: 0.85em;
             border: 1px solid DarkGrey;
         }
         .error {
@@ -58,6 +58,7 @@
             color: white;
             font-size: 100%;
             padding: 5px 5px 5px 19px;
+            border-radius: 5px;
         }
         .submit {
             background-color: LawnGreen;
@@ -264,7 +265,7 @@
     </div>
     <div class="hidden result" id="testUser">
         <div class="hidden tooltip strong message" id="wowsuchtooltip">
-            &#9888; You should probably delete this test user after you're done with it by pressing the Undo It button.
+            &#9888; You should probably delete this test user when you're done with it.
         </div>
         <div class="strong label">Test user id:</div><div class="label" id="uid"></div>
         <div class="strong label">Test user email:</div><div class="label" id="email"></div>
@@ -274,6 +275,7 @@
             <input type="hidden" id="fbEmail" name="email"/>
             <input type="hidden" id="fbPass" name="pass"/>
         </form>
+        <p></p>
         <button class="submit bigText" id="delete"> UNDO IT. </button>
     </div>
 </div>

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="author" content="hzhou">
@@ -15,7 +16,7 @@
         }
         .form, .result {
             max-width: 400px;
-            margin: 0 auto;
+            margin: 10px auto;
             padding: 20px;
             border: 1px solid black;
             border-radius: 6px;
@@ -28,27 +29,26 @@
             display: block;
         }
         .hidden {
-            display: none !important;
+            display: none;
         }
         .message {
             display: block;
             margin-bottom: 10px;
         }
         .tooltip {
-            background: lightyellow;
+            background: LightYellow;
             color: black;
             border-radius: 5px;
             padding: 10px;
             font-size:80%;
-            border: 1px solid darkgrey;
+            border: 1px solid DarkGrey;
         }
         .error {
-            display: block;
-            width: 400px;
-            vertical-align: top;
+            max-width: 400px;
+            vertical-align: middle;
             background-color: red;
             color: white;
-            padding: 10px 20px;
+            padding: 20px;
             margin: 0 auto 10px;
             border: 1px solid black;
             border-radius: 6px;
@@ -60,17 +60,27 @@
             padding: 5px 5px 5px 19px;
         }
         .submit {
-            background-color: lawngreen;
+            background-color: LawnGreen;
             color: black;
         }
         .submit:active {
             background-color: red;
             color: white;
         }
+        .mediumText {
+            font-size: 1.5em;
+            padding: 0.15em 0.3em;
+            font-weight: bold;
+        }
+        .bigText {
+            font-size: 2em;
+            padding: 0.3em 0.6em;
+            font-weight: bold;
+        }
         input {
             width: 200px;
         }
-        input#fullName {
+        .shortInput {
             width: 166px;
         }
     </style>
@@ -83,11 +93,11 @@
 
             var show = function( elem ) {
                 elem.className = elem.className.replace(/\bhidden\b/,'').trim();
-            }
+            };
 
             var hide = function( elem ) {
                 elem.className = 'hidden '+elem.className.replace(/\bhidden\b/,'').trim();
-            }
+            };
 
             var showThenHide = function( elem, timeout ) {
                 setTimeout(function() {
@@ -96,11 +106,11 @@
                         hide(elem);
                     }, timeout);
                 }, 500);
-            }
+            };
 
             if (window.location.search) {
                 var args = window.location.search.substring(1).split('&');
-                for (i in args) {
+                for (var i in args) {
                     if (args[i].substring(0,'appId='.length) === 'appId=') {
                         appId.value = args[i].substring('appId='.length);
                     }
@@ -127,13 +137,13 @@
                 document.getElementById('errorText').innerHTML = message;
                 show(document.getElementById('fbError'));
                 hide(document.getElementById('message'));
-            }
+            };
 
             var message = function( message ) {
                 document.getElementById('messageText').innerHTML = message;
                 show(document.getElementById('message'));
                 hide(document.getElementById('fbError'));
-            }
+            };
 
             var rollName = document.getElementById('reRoll').onclick = function () {
                 var first = [ "Test", "Testy", "Tester", "Testa", "Testopher", "Testina", "Testathan" ];
@@ -143,10 +153,10 @@
                 var suffix2 = [ "shire", "further", "owitz", "ovich", "ovelt", "wich", "by" ];
                 document.getElementById('fullName').value = 
                     first[ Math.floor( Math.random() * first.length ) ] + " " +
-                    (Math.random() < .3 ? prefix[ Math.floor( Math.random() * prefix.length) ] : "") +
+                    (Math.random() < 0.3 ? prefix[ Math.floor( Math.random() * prefix.length) ] : "") +
                     "Test" +
-                    (Math.random() < .9 ? suffix[ Math.floor( Math.random() * suffix.length) ] : "") +
-                    (Math.random() < .5 ? suffix2[ Math.floor( Math.random() * suffix2.length) ] : "");
+                    (Math.random() < 0.9 ? suffix[ Math.floor( Math.random() * suffix.length) ] : "") +
+                    (Math.random() < 0.5 ? suffix2[ Math.floor( Math.random() * suffix2.length) ] : "");
             };
             rollName();
 
@@ -209,7 +219,7 @@
                             error(resp.error.message);
                         }
                     }
-                }
+                };
                 var appId = document.getElementById('appId').value,
                     appSecret = document.getElementById('appSecret').value,
                     uid = document.getElementById('uid').getAttribute('value'),
@@ -221,7 +231,7 @@
 
             var loginFB = document.getElementById('login').onclick = function() {
                 document.getElementById('fbLoginForm').submit();
-            }
+            };
         };
     </script>
 </head>
@@ -229,7 +239,7 @@
 <div class="content">
     <h2>So, you wanna create a facebook test user, huh?</h2>
     <div class="hidden error" id="fbError">
-        <h2>Something broke facebook:</h2>
+        <div class="mediumText">Something broke facebook:</div>
         <div class="label" id="errorText"></div>
     </div>
     <div class="hidden message" id="message">
@@ -241,9 +251,9 @@
         <div class="label">App secret right here</div>
         <input type="text" id="appSecret" name="appSecret" tabindex=2 />
         <div class="label">Name your user</div>
-        <input type="text" id="fullName" name="fullName" tabindex=3 /> <button id="reRoll">&#10227;</button>
-        <p />
-        <div><button class="submit" id="doIt" tabindex=3><h1> DO IT. </h1></button></div>
+        <input class="shortInput" type="text" id="fullName" name="fullName" tabindex=3 /> <button id="reRoll">&#10227;</button>
+        <p></p>
+        <button class="submit bigText" id="doIt" tabindex=3> DO IT. </button>
     </div>
     <div class="hidden result" id="testUser">
         <div class="hidden tooltip strong message" id="wowsuchtooltip">
@@ -257,7 +267,7 @@
             <input type="hidden" id="fbEmail" name="email"/>
             <input type="hidden" id="fbPass" name="pass"/>
         </form>
-        <div><button class="submit" id="delete"><h1> UNDO IT. </h1></button></div>
+        <button class="submit bigText" id="delete"> UNDO IT. </button>
     </div>
 </div>
 </body>

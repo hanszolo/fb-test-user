@@ -29,7 +29,7 @@
             display: block;
         }
         .hidden {
-            display: none;
+            display: none !important;
         }
         .message {
             display: block;
@@ -130,6 +130,7 @@
                 document.getElementById('password').innerHTML = sessionStorage.getItem('fb-test-user-password');
                 document.getElementById('fbPass').value = sessionStorage.getItem('fb-test-user-password');
                 show(document.getElementById('testUser'));
+                hide(document.getElementById('createUser'));
                 showThenHide(document.getElementById('wowsuchtooltip'),15000);
             }
 
@@ -139,9 +140,13 @@
                 hide(document.getElementById('message'));
             };
 
-            var message = function( message ) {
+            var message = function( message, timeout ) {
                 document.getElementById('messageText').innerHTML = message;
-                show(document.getElementById('message'));
+                if (timeout && timeout > 0) {
+                    showThenHide(document.getElementById('message'), timeout);
+                } else {
+                    show(document.getElementById('message'));
+                }
                 hide(document.getElementById('fbError'));
             };
 
@@ -165,7 +170,6 @@
                 xhr.onreadystatechange = function() {
                     if (this.readyState === 4) {
                         hide(document.getElementById('message'));
-                        var testUser = document.getElementById('testUser');
                         var resp = JSON.parse(xhr.responseText);
                         if (resp && resp.id && resp.email && resp.password) {
                             document.getElementById('uid').innerHTML = resp.id;
@@ -178,6 +182,8 @@
                             sessionStorage.setItem('fb-test-user-email', resp.email);
                             sessionStorage.setItem('fb-test-user-password', resp.password);
                             show(document.getElementById('testUser'));
+                            hide(document.getElementById('createUser'));
+                            hide(document.getElementById('message'));
                             showThenHide(document.getElementById('wowsuchtooltip'),15000);
                         } else if (resp.error) {
                             error(resp.error.message);
@@ -211,7 +217,8 @@
                             sessionStorage.removeItem('fb-test-user-email');
                             sessionStorage.removeItem('fb-test-user-password');
                             hide(document.getElementById('testUser'));
-                            message('Killed that test user.');
+                            show(document.getElementById('createUser'));
+                            message('Killed that test user.', 15000);
                             rollName();
                         }
                         else {
@@ -245,7 +252,7 @@
     <div class="hidden message" id="message">
         <div class="label" id="messageText"></div>
     </div>
-    <div class="form">
+    <div class="form" id="createUser">
         <div class="label">Put yo app id here</div>
         <input type="text" id="appId" name="appId" tabindex=1 />
         <div class="label">App secret right here</div>
